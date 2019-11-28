@@ -62,6 +62,7 @@ def proxy_setup():
 	print(check+"Staring PROXY thread to localhost")
 	th = threading.Thread(target=server)
 	th.start()
+	t.sleep(3)
 	print(check+"Masked IP: ")
 	os.system("curl ifconfig.co")
 
