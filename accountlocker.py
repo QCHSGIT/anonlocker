@@ -53,7 +53,7 @@ def realpasswordgen():
         passlist.append(IDNUMBER)
 
 def server():
-	os.system("xterm -e proxybroker serve --host 127.0.0.1 --port 8888 --types HTTP HTTPS --lvl High")
+	os.system("proxybroker serve --host 127.0.0.1 --port 8888 --types HTTP HTTPS --lvl High")
 
 def proxy_setup():
 	print(check+"Rerouting HTTP and HTTPS traffic to localhost.")
