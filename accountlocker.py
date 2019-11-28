@@ -60,8 +60,10 @@ def proxy_setup():
 	os.system("export http_proxy=127.0.0.1:8888")
 	os.system("export https_proxy=127.0.0.1:8888")
 	print(check+"Staring PROXY thread to localhost")
-	th = threading.thread(target=server)
+	th = threading.Thread(target=server)
 	th.start()
+	print(check+"Masked IP: ")
+	os.system("curl ifconfig.co")
 
 
 def bruteUser(username):
