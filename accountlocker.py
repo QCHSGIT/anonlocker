@@ -50,8 +50,9 @@ def realpasswordgen():
         IDNUMBER = ID_START +''.join((random.choice(str(chars))) for x in range(int(3)))
         passlist.append(IDNUMBER)
 
+
 def server():
-	os.system("proxybroker serve --host 127.0.0.1 --port 8888 --types HTTP HTTPS --lvl High -s")
+	os.system('xterm -e "sh server.sh" &')
 
 def proxy_setup():
 	print(check+"Staring PROXY thread to localhost")
@@ -59,11 +60,6 @@ def proxy_setup():
 	th.start()
 	t.sleep(3)
 	print(check+"Rerouting HTTP and HTTPS traffic to localhost.")
-	os.system("export use_proxy=yes")
-	os.system("export http_proxy=http://127.0.0.1:8888")
-	os.system("export https_proxy=http://127.0.0.1:8888")
-	os.system("export ftp_proxy=http://127.0.0.1:8888")
-	os.system("export telnet_proxy=http://127.0.0.1:8888")
 	print(check+"Masked IP: ")
 	os.system("curl ifconfig.co")
 	t.sleep(3)
