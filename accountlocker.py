@@ -65,6 +65,7 @@ def proxy_setup():
 	t.sleep(3)
 	print(check+"Masked IP: ")
 	os.system("curl ifconfig.co")
+	t.sleep(3)
 
 
 def bruteUser(username):
