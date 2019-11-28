@@ -56,13 +56,15 @@ def server():
 	os.system("proxybroker serve --host 127.0.0.1 --port 8888 --types HTTP HTTPS --lvl High")
 
 def proxy_setup():
-	print(check+"Rerouting HTTP and HTTPS traffic to localhost.")
-	os.system("export http_proxy=127.0.0.1:8888")
-	os.system("export https_proxy=127.0.0.1:8888")
 	print(check+"Staring PROXY thread to localhost")
 	th = threading.Thread(target=server)
 	th.start()
 	t.sleep(3)
+	print(check+"Rerouting HTTP and HTTPS traffic to localhost.")
+	os.system("export http_proxy=http://127.0.0.1:8888")
+	os.system("export https_proxy=http://127.0.0.1:8888")
+	os.system("export ftp_proxy=http://127.0.0.1:8888")
+	os.system("export telnet_proxy=http://127.0.0.1:8888")
 	print(check+"Masked IP: ")
 	os.system("curl ifconfig.co")
 	t.sleep(3)
